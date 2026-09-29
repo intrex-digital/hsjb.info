@@ -45,17 +45,17 @@ A task is complete only when:
 
 ## Phase 1: Project Setup
 
-- [ ] TASK-003: Create the monorepo (`frontend/`, `backend/`) and initialize Git
-- [ ] TASK-004: Initialize Next.js (App Router, `src/` directory, TypeScript)
-- [ ] TASK-005: Configure strict TypeScript, ESLint, Prettier and path aliases
-- [ ] TASK-006: Configure Tailwind CSS with the brand color tokens
-- [ ] TASK-007: Set up Shadcn UI / Radix UI
-- [ ] TASK-008: Load Inter and JetBrains Mono with `next/font`
-- [ ] TASK-009: Install and configure Framer Motion
-- [ ] TASK-010: Initialize the Django project with `config/` and `apps/`
-- [ ] TASK-011: Install Django REST Framework and CORS, and set up the `/api/v1/` prefix
-- [ ] TASK-012: Configure environment variables and `.env.example` for both apps
-- [ ] TASK-013: Add lint and test scripts and a basic CI workflow
+- [x] TASK-003: Create the monorepo (`frontend/`, `backend/`) and initialize Git
+- [x] TASK-004: Initialize Next.js (App Router, `src/` directory, TypeScript)
+- [x] TASK-005: Configure strict TypeScript, ESLint, Prettier and path aliases
+- [x] TASK-006: Configure Tailwind CSS with the brand color tokens
+- [x] TASK-007: Set up Shadcn UI / Radix UI
+- [x] TASK-008: Load Inter and JetBrains Mono with `next/font`
+- [x] TASK-009: Install and configure Framer Motion
+- [x] TASK-010: Initialize the Django project with `config/` and `apps/`
+- [x] TASK-011: Install Django REST Framework and CORS, and set up the `/api/v1/` prefix
+- [x] TASK-012: Configure environment variables and `.env.example` for both apps
+- [x] TASK-013: Add lint and test scripts and a basic CI workflow
 
 ## Phase 2: Design Foundation
 
