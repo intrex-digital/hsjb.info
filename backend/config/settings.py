@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     # Third-party
     "rest_framework",
     "corsheaders",
+    "storages",
     # Local
+    "apps.core",
     "apps.users",
 ]
 
@@ -123,6 +125,27 @@ CLOUDFLARE_R2_ACCESS_KEY_ID = env("CLOUDFLARE_R2_ACCESS_KEY_ID", default="")
 CLOUDFLARE_R2_SECRET_ACCESS_KEY = env("CLOUDFLARE_R2_SECRET_ACCESS_KEY", default="")
 CLOUDFLARE_R2_PUBLIC_URL = env("CLOUDFLARE_R2_PUBLIC_URL", default="")
 
+# Django Storages — use R2 for media in production, local filesystem in dev
+_USE_R2 = all(
+    [
+        CLOUDFLARE_R2_BUCKET_NAME,
+        CLOUDFLARE_R2_ENDPOINT_URL,
+        CLOUDFLARE_R2_ACCESS_KEY_ID,
+        CLOUDFLARE_R2_SECRET_ACCESS_KEY,
+    ]
+)
+
+STORAGES = {
+    "default": {
+        "BACKEND": "apps.core.storage.R2MediaStorage"
+        if _USE_R2
+        else "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Password validation
@@ -166,9 +189,9 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "DEFAULT_PAGINATION_CLASS": "apps.core.pagination.StandardPageNumberPagination",
     "PAGE_SIZE": 20,
-    "EXCEPTION_HANDLER": "rest_framework.views.exception_handler",
+    "EXCEPTION_HANDLER": "apps.core.exceptions.api_exception_handler",
 }
 
 

@@ -72,10 +72,10 @@ A task is complete only when:
 ## Phase 3: Backend Foundation
 
 - [x] TASK-023: Configure the database connection and initial migration (per ADR-005)
-- [ ] TASK-024: Define the standard API error format and pagination
-- [ ] TASK-025: Configure Cloudflare R2 storage
-- [ ] TASK-026: Create the media presigned upload endpoint
-- [ ] TASK-027: Create the typed frontend API client in `services/`
+- [x] TASK-024: Define the standard API error format and pagination
+- [x] TASK-025: Configure Cloudflare R2 storage
+- [x] TASK-026: Create the media presigned upload endpoint
+- [x] TASK-027: Create the typed frontend API client in `services/`
 
 ## Phase 4: Admin Authentication
 

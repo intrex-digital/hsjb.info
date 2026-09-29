@@ -40,10 +40,14 @@ Planning is complete. All project documents are written. No application code exi
 - TASK-021: Build the app shell (sticky Navbar, mobile menu, Footer, skip link)
 - TASK-022: Create the scroll-reveal animation wrapper (respects reduced motion)
 - TASK-023: Configure the database connection and initial migration (per ADR-005)
+- TASK-024: Define the standard API error format and pagination
+- TASK-025: Configure Cloudflare R2 storage
+- TASK-026: Create the media presigned upload endpoint
+- TASK-027: Create the typed frontend API client in `services/`
 
 ## Current Task
 
-TASK-024: Define the standard API error format and pagination
+TASK-028: Create the login endpoint (JWT in httpOnly cookie)
 
 ## Known Issues
 
@@ -64,4 +68,4 @@ TASK-024: Define the standard API error format and pagination
 
 ## Next Step
 
-Define the standard API error format and pagination (TASK-024).
+Create the login endpoint (JWT in httpOnly cookie) (TASK-028).

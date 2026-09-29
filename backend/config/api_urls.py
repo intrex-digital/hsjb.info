@@ -5,9 +5,10 @@ Each domain app registers its own urls.py here under its resource prefix.
 All endpoints live under /api/v1/<resource>/.
 """
 
-from django.urls import path  # noqa: F401 – imported for future use
+from django.urls import include, path
 
 urlpatterns: list = [
+    path("core/", include("apps.core.urls")),
     # App URL includes will be added here as apps are built, e.g.:
     # path("profile/", include("apps.profiles.urls")),
     # path("skills/", include("apps.skills.urls")),
