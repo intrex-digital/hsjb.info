@@ -44,10 +44,15 @@ Planning is complete. All project documents are written. No application code exi
 - TASK-025: Configure Cloudflare R2 storage
 - TASK-026: Create the media presigned upload endpoint
 - TASK-027: Create the typed frontend API client in `services/`
+- TASK-028: Create the login endpoint (JWT in httpOnly cookie)
+- TASK-029: Create logout and "current user" endpoints
+- TASK-030: Add admin-only permission class for write endpoints
+- TASK-031: Create the admin login page
+- TASK-032: Protect `/admin` routes with a server-side check
 
 ## Current Task
 
-TASK-028: Create the login endpoint (JWT in httpOnly cookie)
+TASK-033: Write authentication tests
 
 ## Known Issues
 
@@ -68,4 +73,4 @@ TASK-028: Create the login endpoint (JWT in httpOnly cookie)
 
 ## Next Step
 
-Create the login endpoint (JWT in httpOnly cookie) (TASK-028).
+Write authentication tests (TASK-033).

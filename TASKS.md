@@ -79,11 +79,11 @@ A task is complete only when:
 
 ## Phase 4: Admin Authentication
 
-- [ ] TASK-028: Create the login endpoint (JWT in httpOnly cookie)
-- [ ] TASK-029: Create logout and "current user" endpoints
-- [ ] TASK-030: Add admin-only permission class for write endpoints
-- [ ] TASK-031: Create the admin login page
-- [ ] TASK-032: Protect `/admin` routes with a server-side check
+- [x] TASK-028: Create the login endpoint (JWT in httpOnly cookie)
+- [x] TASK-029: Create logout and "current user" endpoints
+- [x] TASK-030: Add admin-only permission class for write endpoints
+- [x] TASK-031: Create the admin login page
+- [x] TASK-032: Protect `/admin` routes with a server-side check
 - [ ] TASK-033: Write authentication tests
 
 ## Phase 5: Public Sections

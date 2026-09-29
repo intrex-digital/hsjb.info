@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third-party
     "rest_framework",
+    "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
     "storages",
     # Local
@@ -184,10 +186,11 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
     "DEFAULT_PARSER_CLASSES": ["rest_framework.parsers.JSONParser"],
     "DEFAULT_AUTHENTICATION_CLASSES": [
+        "apps.core.authentication.CookieJWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+        "apps.core.permissions.IsAdminOrReadOnly",
     ],
     "DEFAULT_PAGINATION_CLASS": "apps.core.pagination.StandardPageNumberPagination",
     "PAGE_SIZE": 20,
@@ -208,9 +211,24 @@ CORS_ALLOW_CREDENTIALS = True
 # JWT Auth
 # ─────────────────────────────────────────────────────────────────────────────
 
+from datetime import timedelta
+
 JWT_SECRET_KEY = env("JWT_SECRET_KEY", default="change-me-before-production")
 JWT_ACCESS_TOKEN_LIFETIME_MINUTES = env("JWT_ACCESS_TOKEN_LIFETIME_MINUTES")
 JWT_REFRESH_TOKEN_LIFETIME_DAYS = env("JWT_REFRESH_TOKEN_LIFETIME_DAYS")
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=JWT_ACCESS_TOKEN_LIFETIME_MINUTES),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=JWT_REFRESH_TOKEN_LIFETIME_DAYS),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "UPDATE_LAST_LOGIN": True,
+    "SIGNING_KEY": JWT_SECRET_KEY,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    # We will mostly use httpOnly cookies, but keep headers for flexibility
+    # The custom authentication backend/middleware might be needed if we strictly use cookies.
+    # SimpleJWT defaults to Authorization header. We can subclass it to check cookies.
+}
 
 
 # ─────────────────────────────────────────────────────────────────────────────

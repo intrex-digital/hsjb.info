@@ -18,7 +18,7 @@ class PresignedUploadViewTests(APITestCase):
 
     def test_unauthenticated_fails(self):
         response = self.client.post(self.url, {"filename": "test.png", "content_type": "image/png"}, format="json")
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_non_admin_fails(self):
         self.client.force_authenticate(user=self.normal_user)
