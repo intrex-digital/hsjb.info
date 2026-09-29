@@ -59,19 +59,19 @@ A task is complete only when:
 
 ## Phase 2: Design Foundation
 
-- [ ] TASK-014: Implement light and dark theme tokens with a theme toggle
-- [ ] TASK-015: Create the Button component (primary, secondary, outline, ghost, destructive)
-- [ ] TASK-016: Create the Card component
-- [ ] TASK-017: Create form components (Input, Textarea, Label, field error)
-- [ ] TASK-018: Create Badge and SectionHeader components
-- [ ] TASK-019: Create Skeleton, EmptyState and ErrorState components
-- [ ] TASK-020: Create the Toast notification system
-- [ ] TASK-021: Build the app shell (sticky Navbar, mobile menu, Footer, skip link)
-- [ ] TASK-022: Create the scroll-reveal animation wrapper (respects reduced motion)
+- [x] TASK-014: Implement light and dark theme tokens with a theme toggle
+- [x] TASK-015: Create the Button component (primary, secondary, outline, ghost, destructive)
+- [x] TASK-016: Create the Card component
+- [x] TASK-017: Create form components (Input, Textarea, Label, field error)
+- [x] TASK-018: Create Badge and SectionHeader components
+- [x] TASK-019: Create Skeleton, EmptyState and ErrorState components
+- [x] TASK-020: Create the Toast notification system
+- [x] TASK-021: Build the app shell (sticky Navbar, mobile menu, Footer, skip link)
+- [x] TASK-022: Create the scroll-reveal animation wrapper (respects reduced motion)
 
 ## Phase 3: Backend Foundation
 
-- [ ] TASK-023: Configure the database connection and initial migration (per ADR-005)
+- [x] TASK-023: Configure the database connection and initial migration (per ADR-005)
 - [ ] TASK-024: Define the standard API error format and pagination
 - [ ] TASK-025: Configure Cloudflare R2 storage
 - [ ] TASK-026: Create the media presigned upload endpoint

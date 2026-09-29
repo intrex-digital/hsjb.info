@@ -30,10 +30,20 @@ Planning is complete. All project documents are written. No application code exi
 - TASK-011: Install DRF, CORS, and set up the `/api/v1/` prefix
 - TASK-012: Configure environment variables and `.env.example` for both apps
 - TASK-013: Add lint and test scripts and a basic CI workflow
+- TASK-014: Implement light and dark theme tokens with a theme toggle
+- TASK-015: Create the Button component (primary, secondary, outline, ghost, destructive)
+- TASK-016: Create the Card component
+- TASK-017: Create form components (Input, Textarea, Label, field error)
+- TASK-018: Create Badge and SectionHeader components
+- TASK-019: Create Skeleton, EmptyState and ErrorState components
+- TASK-020: Create the Toast notification system
+- TASK-021: Build the app shell (sticky Navbar, mobile menu, Footer, skip link)
+- TASK-022: Create the scroll-reveal animation wrapper (respects reduced motion)
+- TASK-023: Configure the database connection and initial migration (per ADR-005)
 
 ## Current Task
 
-TASK-014: Implement light and dark theme tokens with a theme toggle
+TASK-024: Define the standard API error format and pagination
 
 ## Known Issues
 
@@ -54,4 +64,4 @@ TASK-014: Implement light and dark theme tokens with a theme toggle
 
 ## Next Step
 
-Begin Phase 2 (Design Foundation): implement light and dark theme tokens with a theme toggle (TASK-014).
+Define the standard API error format and pagination (TASK-024).
