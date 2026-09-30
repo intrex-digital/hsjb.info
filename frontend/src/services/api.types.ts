@@ -128,3 +128,13 @@ export interface TrainingProject {
   technologies: string
   order: number
 }
+
+export interface Service {
+  id: number
+  title: string
+  description: string
+  icon_url: string
+  price_range: string
+  order: number
+  is_active: boolean
+}

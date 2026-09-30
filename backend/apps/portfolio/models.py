@@ -55,3 +55,17 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+
+class Service(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    icon_url = models.URLField(max_length=500, blank=True)
+    price_range = models.CharField(max_length=100, blank=True, help_text="e.g. '$100 - $500' or 'Contact for pricing'")
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order", "title"]
+
+    def __str__(self):
+        return self.title

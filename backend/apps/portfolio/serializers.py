@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Profile, Skill, SkillCategory
+from .models import Profile, Skill, SkillCategory, Service
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,3 +33,9 @@ class SkillCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SkillCategory
         fields = ["id", "name", "order", "skills"]
+
+
+class ServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        fields = ["id", "title", "description", "icon_url", "price_range", "order", "is_active"]

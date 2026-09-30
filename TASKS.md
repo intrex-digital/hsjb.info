@@ -105,8 +105,8 @@ A task is complete only when:
 - [x] TASK-045: Build Industrial Training Projects (work as a technical trainer)
 
 ### Services
-- [ ] TASK-046: Create Services model and API
-- [ ] TASK-047: Build the Services section with an "Enquire" action
+- [x] TASK-046: Create Services model and API
+- [x] TASK-047: Build the Services section with an "Enquire" action
 
 ### Technical Blogs
 - [ ] TASK-048: Create Blog models and APIs (posts, categories, tags)

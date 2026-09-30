@@ -110,3 +110,32 @@ class SkillTests(APITestCase):
         self.assertEqual(res_cat_get.status_code, status.HTTP_200_OK)
         self.assertEqual(len(res_cat_get.data["skills"]), 1)
         self.assertEqual(res_cat_get.data["skills"][0]["name"], "React")
+
+
+class ServiceTests(APITestCase):
+    def setUp(self):
+        self.admin = CustomUser.objects.create_user(
+            email="admin@hsjb.info",
+            password="adminpassword",
+            is_staff=True,
+        )
+        self.service_url = "/api/v1/portfolio/services/"
+
+    def test_admin_can_create_service(self):
+        self.client.force_authenticate(user=self.admin)
+        res = self.client.post(self.service_url, {
+            "title": "Web Development",
+            "description": "Building cool websites.",
+            "price_range": "$100/hr",
+            "is_active": True
+        }, format="json")
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(res.data["title"], "Web Development")
+
+    def test_public_can_read_service(self):
+        from .models import Service
+        Service.objects.create(title="SEO", description="Search Engine Optimization", is_active=True)
+        res = self.client.get(self.service_url)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(res.data), 1)
+        self.assertEqual(res.data[0]["title"], "SEO")

@@ -60,12 +60,12 @@ Planning is complete. All project documents are written. No application code exi
 - TASK-041: Build Education
 - TASK-042: Build Professional Training
 - TASK-043: Build Certifications & Accreditations
-- TASK-044: Build Industrial Projects (with detail view)
-- TASK-045: Build Industrial Training Projects (work as a technical trainer)
+- TASK-046: Create Services model and API
+- TASK-047: Build the Services section with an "Enquire" action
 
 ## Current Task
 
-TASK-046: Create Services model and API
+TASK-048: Create Blog models and APIs (posts, categories, tags)
 
 ## Known Issues
 

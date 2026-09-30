@@ -40,3 +40,15 @@ class SkillViewSet(viewsets.ModelViewSet):
     serializer_class = SkillSerializer
     permission_classes = [IsAdminOrReadOnly]
     pagination_class = None
+
+from .models import Service
+from .serializers import ServiceSerializer
+
+class ServiceViewSet(viewsets.ModelViewSet):
+    """
+    CRUD for Services.
+    """
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
+    permission_classes = [IsAdminOrReadOnly]
+    pagination_class = None
