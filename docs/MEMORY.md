@@ -49,10 +49,11 @@ Planning is complete. All project documents are written. No application code exi
 - TASK-030: Add admin-only permission class for write endpoints
 - TASK-031: Create the admin login page
 - TASK-032: Protect `/admin` routes with a server-side check
+- TASK-033: Write authentication tests
 
 ## Current Task
 
-TASK-033: Write authentication tests
+TASK-034: Create Profile model and API (hero and about data)
 
 ## Known Issues
 

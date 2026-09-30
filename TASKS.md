@@ -84,7 +84,7 @@ A task is complete only when:
 - [x] TASK-030: Add admin-only permission class for write endpoints
 - [x] TASK-031: Create the admin login page
 - [x] TASK-032: Protect `/admin` routes with a server-side check
-- [ ] TASK-033: Write authentication tests
+- [x] TASK-033: Write authentication tests
 
 ## Phase 5: Public Sections
 
