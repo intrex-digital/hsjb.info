@@ -33,3 +33,34 @@ export class ApiError extends Error {
     this.detail = response.detail
   }
 }
+
+export interface Profile {
+  name: string
+  headline: string
+  short_bio: string
+  hero_image_url: string
+  about_text: string
+  about_image_url: string
+  email: string
+  github_url: string
+  linkedin_url: string
+  twitter_url: string
+  resume_url: string
+  updated_at: string
+}
+
+export interface Skill {
+  id: number
+  name: string
+  icon_url: string
+  proficiency: number
+  order: number
+  category: number
+}
+
+export interface SkillCategory {
+  id: number
+  name: string
+  order: number
+  skills: Skill[]
+}

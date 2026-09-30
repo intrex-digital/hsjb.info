@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     # Local
     "apps.core",
     "apps.users",
+    "apps.portfolio",
 ]
 
 AUTH_USER_MODEL = "users.CustomUser"

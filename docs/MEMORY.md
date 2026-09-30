@@ -50,10 +50,15 @@ Planning is complete. All project documents are written. No application code exi
 - TASK-031: Create the admin login page
 - TASK-032: Protect `/admin` routes with a server-side check
 - TASK-033: Write authentication tests
+- TASK-034: Create Profile model and API (hero and about data)
+- TASK-035: Build the Home/Hero section
+- TASK-036: Build the About Me section
+- TASK-037: Create Skills model and API
+- TASK-038: Build the Skills section
 
 ## Current Task
 
-TASK-034: Create Profile model and API (hero and about data)
+TASK-039: Create Resume models and APIs (education, training, certifications, industrial projects, training projects)
 
 ## Known Issues
 

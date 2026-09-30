@@ -89,11 +89,11 @@ A task is complete only when:
 ## Phase 5: Public Sections
 
 ### Home, About and Skills
-- [ ] TASK-034: Create Profile model and API (hero and about data)
-- [ ] TASK-035: Build the Home/Hero section
-- [ ] TASK-036: Build the About Me section
-- [ ] TASK-037: Create Skills model and API
-- [ ] TASK-038: Build the Skills section
+- [x] TASK-034: Create Profile model and API (hero and about data)
+- [x] TASK-035: Build the Home/Hero section
+- [x] TASK-036: Build the About Me section
+- [x] TASK-037: Create Skills model and API
+- [x] TASK-038: Build the Skills section
 
 ### Resume
 - [ ] TASK-039: Create Resume models and APIs (education, training, certifications, industrial projects, training projects)
