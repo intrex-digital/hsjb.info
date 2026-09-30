@@ -1,7 +1,8 @@
 import { Hero } from "@/components/home/hero"
 import { About } from "@/components/home/about"
 import { Skills } from "@/components/home/skills"
-import { Profile, SkillCategory } from "@/services/api.types"
+import { Resume } from "@/components/home/resume"
+import { Profile, SkillCategory, Education, Training, Certification, IndustrialProject, TrainingProject } from "@/services/api.types"
 
 // Fetch function for Profile
 async function getProfile(): Promise<Profile> {
@@ -11,7 +12,6 @@ async function getProfile(): Promise<Profile> {
     const res = await fetch(`${baseUrl}/portfolio/profile/`, {
       next: { revalidate: 60 },
     })
-    
     if (!res.ok) throw new Error("Failed to fetch profile")
     return res.json()
   } catch (error) {
@@ -36,12 +36,8 @@ async function getProfile(): Promise<Profile> {
 // Fetch function for Skill Categories
 async function getSkillCategories(): Promise<SkillCategory[]> {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/v1"
-  
   try {
-    const res = await fetch(`${baseUrl}/portfolio/skill-categories/`, {
-      next: { revalidate: 60 },
-    })
-    
+    const res = await fetch(`${baseUrl}/portfolio/skill-categories/`, { next: { revalidate: 60 } })
     if (!res.ok) throw new Error("Failed to fetch skill categories")
     return res.json()
   } catch (error) {
@@ -50,9 +46,37 @@ async function getSkillCategories(): Promise<SkillCategory[]> {
   }
 }
 
+// Fetch function for Resume Data
+async function getResumeData() {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/v1"
+  const opts = { next: { revalidate: 60 } }
+  
+  try {
+    const [edu, train, certs, indProj, trainProj] = await Promise.all([
+      fetch(`${baseUrl}/resume/education/`, opts).then(res => res.ok ? res.json() : []),
+      fetch(`${baseUrl}/resume/training/`, opts).then(res => res.ok ? res.json() : []),
+      fetch(`${baseUrl}/resume/certifications/`, opts).then(res => res.ok ? res.json() : []),
+      fetch(`${baseUrl}/resume/industrial-projects/`, opts).then(res => res.ok ? res.json() : []),
+      fetch(`${baseUrl}/resume/training-projects/`, opts).then(res => res.ok ? res.json() : []),
+    ])
+    
+    return {
+      education: edu as Education[],
+      training: train as Training[],
+      certifications: certs as Certification[],
+      industrialProjects: indProj as IndustrialProject[],
+      trainingProjects: trainProj as TrainingProject[],
+    }
+  } catch (error) {
+    console.error("Resume data fetch error:", error)
+    return { education: [], training: [], certifications: [], industrialProjects: [], trainingProjects: [] }
+  }
+}
+
 export default async function Home() {
   const profile = await getProfile()
   const skillCategories = await getSkillCategories()
+  const resumeData = await getResumeData()
   
   return (
     <div className="flex min-h-screen flex-col">
@@ -60,7 +84,8 @@ export default async function Home() {
         <Hero profile={profile} />
         <About profile={profile} />
         <Skills categories={skillCategories} />
-        {/* Additional sections (Projects) will go here */}
+        <Resume data={resumeData} />
+        {/* Additional sections (Services, Blog) will go here */}
       </main>
     </div>
   )

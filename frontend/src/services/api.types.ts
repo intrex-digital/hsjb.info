@@ -64,3 +64,67 @@ export interface SkillCategory {
   order: number
   skills: Skill[]
 }
+
+export interface Education {
+  id: number
+  degree: string
+  institution: string
+  location: string
+  start_date: string | null
+  end_date: string | null
+  is_current: boolean
+  description: string
+  order: number
+}
+
+export interface Training {
+  id: number
+  title: string
+  institution: string
+  location: string
+  start_date: string | null
+  end_date: string | null
+  is_current: boolean
+  description: string
+  order: number
+}
+
+export interface Certification {
+  id: number
+  name: string
+  issuer: string
+  issue_date: string | null
+  expiration_date: string | null
+  credential_id: string
+  credential_url: string
+  order: number
+}
+
+export interface IndustrialProject {
+  id: number
+  title: string
+  role: string
+  company: string
+  start_date: string | null
+  end_date: string | null
+  is_current: boolean
+  description: string
+  link: string
+  image_url: string
+  technologies: string
+  order: number
+}
+
+export interface TrainingProject {
+  id: number
+  title: string
+  role: string
+  institution: string
+  start_date: string | null
+  end_date: string | null
+  is_current: boolean
+  description: string
+  link: string
+  technologies: string
+  order: number
+}

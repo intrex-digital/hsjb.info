@@ -96,13 +96,13 @@ A task is complete only when:
 - [x] TASK-038: Build the Skills section
 
 ### Resume
-- [ ] TASK-039: Create Resume models and APIs (education, training, certifications, industrial projects, training projects)
-- [ ] TASK-040: Build the Resume section shell with sub-section navigation
-- [ ] TASK-041: Build Education
-- [ ] TASK-042: Build Professional Training
-- [ ] TASK-043: Build Certifications & Accreditations
-- [ ] TASK-044: Build Industrial Projects (with detail view)
-- [ ] TASK-045: Build Industrial Training Projects (work as a technical trainer)
+- [x] TASK-039: Create Resume models and APIs (education, training, certifications, industrial projects, training projects)
+- [x] TASK-040: Build the Resume section shell with sub-section navigation
+- [x] TASK-041: Build Education
+- [x] TASK-042: Build Professional Training
+- [x] TASK-043: Build Certifications & Accreditations
+- [x] TASK-044: Build Industrial Projects (with detail view)
+- [x] TASK-045: Build Industrial Training Projects (work as a technical trainer)
 
 ### Services
 - [ ] TASK-046: Create Services model and API

@@ -12,7 +12,7 @@ urlpatterns: list = [
     # App URL includes will be added here as apps are built, e.g.:
     # path("profile/", include("apps.profiles.urls")),
     # path("skills/", include("apps.skills.urls")),
-    # path("education/", include("apps.resume.urls")),
+    path("resume/", include("apps.resume.urls")),
     # path("posts/", include("apps.blog.urls")),
     path("portfolio/", include("apps.portfolio.urls")),
     path("auth/", include("apps.users.urls")),
