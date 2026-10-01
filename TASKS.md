@@ -111,7 +111,7 @@ A task is complete only when:
 ### Technical Blogs
 - [x] TASK-048: Create Blog models and APIs (posts, categories, tags)
 - [x] TASK-049: Build the blog list (search, category filter, pagination)
-- [ ] TASK-050: Build the blog post page (SEO metadata, markdown and code rendering)
+- [x] TASK-050: Build the blog post page (SEO metadata, markdown and code rendering)
 
 ### Contact
 - [ ] TASK-051: Create Contact model and API (validation, rate limit, email notification)
