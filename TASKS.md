@@ -115,7 +115,7 @@ A task is complete only when:
 
 ### Contact
 - [x] TASK-051: Create Contact model and API (validation, rate limit, email notification)
-- [ ] TASK-052: Build the Contact section and form with all states
+- [x] TASK-052: Build the Contact section and form with all states
 
 ### Assembly
 - [ ] TASK-053: Compose the single page layout with scroll-spy navigation

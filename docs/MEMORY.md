@@ -65,10 +65,15 @@ TASK-048 completed. Starting TASK-049: Build the blog list (search, category fil
 - TASK-046: Create Services model and API
 - TASK-047: Build the Services section with an "Enquire" action
 - TASK-048: Create Blog models and APIs (posts, categories, tags)
+- TASK-049: Build the blog list (search, category filter, pagination)
+- TASK-050: Build the blog post page (SEO metadata, markdown and code rendering)
+- TASK-051: Create Contact model and API (validation, rate limit, email notification)
+- TASK-052: Build the Contact section and form with all states
 
 ## Current Task
 
-TASK-049: Build the blog list (search, category filter, pagination)
+TASK-052 completed. Next is TASK-053: Compose the single page layout with scroll-spy navigation.
+
 
 ## Known Issues
 

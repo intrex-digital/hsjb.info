@@ -4,6 +4,7 @@ import { Skills } from "@/components/home/skills";
 import { Resume } from "@/components/home/resume";
 import { Services } from "@/components/home/services";
 import { BlogSection } from "@/components/home/blog";
+import { Contact } from "@/components/home/contact";
 import {
   Profile,
   SkillCategory,
@@ -155,7 +156,8 @@ export default async function Home() {
           totalCount={blogPostsData.count ?? blogPostsData.results.length}
           pageSize={6}
         />
-        {/* Additional sections (Contact, Chat) will go here */}
+        <Contact profile={profile} />
+        {/* Additional sections (Chat) will go here */}
       </main>
     </div>
   );

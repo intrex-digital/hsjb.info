@@ -170,3 +170,19 @@ export interface BlogPost {
   created_at: string;
   updated_at: string;
 }
+
+export interface ContactMessagePayload {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export interface ContactMessageResponse {
+  id: number;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  created_at: string;
+}
