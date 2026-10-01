@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "apps.portfolio",
     "apps.resume",
     "apps.blog",
+    "apps.contact",
 ]
 
 AUTH_USER_MODEL = "users.CustomUser"
@@ -198,6 +199,15 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "apps.core.pagination.StandardPageNumberPagination",
     "PAGE_SIZE": 20,
     "EXCEPTION_HANDLER": "apps.core.exceptions.api_exception_handler",
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "100/day",
+        "user": "1000/day",
+        "contact": "5/day",
+    },
 }
 
 
@@ -252,6 +262,7 @@ MAILERS = {
     },
 }
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="noreply@hsjb.info")
+ADMIN_EMAIL = env("ADMIN_EMAIL", default="admin@hsjb.info")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

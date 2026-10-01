@@ -114,7 +114,7 @@ A task is complete only when:
 - [x] TASK-050: Build the blog post page (SEO metadata, markdown and code rendering)
 
 ### Contact
-- [ ] TASK-051: Create Contact model and API (validation, rate limit, email notification)
+- [x] TASK-051: Create Contact model and API (validation, rate limit, email notification)
 - [ ] TASK-052: Build the Contact section and form with all states
 
 ### Assembly
