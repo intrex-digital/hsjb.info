@@ -90,21 +90,20 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
       {/* Detail View Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 md:p-6 lg:p-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 md:p-6 lg:p-12"
+          >
             {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+            <div
               onClick={() => setSelectedProject(null)}
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             />
 
             {/* Modal Content */}
-            <motion.div
-              layoutId={`project-card-${selectedProject.id}`}
-              className="relative w-full max-w-4xl max-h-full overflow-hidden flex flex-col bg-white dark:bg-zinc-950 rounded-2xl md:rounded-3xl shadow-2xl z-10"
-            >
+            <div className="relative w-full max-w-4xl max-h-full overflow-hidden flex flex-col bg-white dark:bg-zinc-950 rounded-2xl md:rounded-3xl shadow-2xl z-10">
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md transition-colors"
@@ -211,8 +210,8 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

@@ -119,7 +119,7 @@ A task is complete only when:
 
 ### Assembly
 - [x] TASK-053: Compose the single page layout with scroll-spy navigation
-- [ ] TASK-054: Write tests for public APIs and section components
+- [x] TASK-054: Write tests for public APIs and section components
 
 ## Phase 6: Live Web Chat
 
