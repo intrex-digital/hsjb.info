@@ -47,7 +47,10 @@ export function Hero({ profile }: { profile: Profile }) {
   };
 
   return (
-    <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden py-24">
+    <section
+      id="hero"
+      className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden py-24"
+    >
       {/* Background ambient blurs */}
       <div className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 opacity-50 blur-[120px]" />
       <div className="absolute right-0 top-0 -z-10 h-[300px] w-[300px] translate-x-1/3 -translate-y-1/4 rounded-full bg-purple-500/20 opacity-50 blur-[100px]" />
@@ -97,7 +100,7 @@ export function Hero({ profile }: { profile: Profile }) {
           <Button
             size="lg"
             className="h-14 px-8 text-base rounded-full group"
-            render={<a href="#work" />}
+            render={<a href="#resume" />}
           >
             View My Work
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

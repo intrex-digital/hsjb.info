@@ -14,6 +14,7 @@ urlpatterns: list = [
     # path("skills/", include("apps.skills.urls")),
     path("resume/", include("apps.resume.urls")),
     path("blog/", include("apps.blog.urls")),
+    path("", include("apps.blog.urls")),
     path("contact/", include("apps.contact.urls")),
     path("portfolio/", include("apps.portfolio.urls")),
     path("auth/", include("apps.users.urls")),

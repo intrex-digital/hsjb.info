@@ -118,7 +118,7 @@ A task is complete only when:
 - [x] TASK-052: Build the Contact section and form with all states
 
 ### Assembly
-- [ ] TASK-053: Compose the single page layout with scroll-spy navigation
+- [x] TASK-053: Compose the single page layout with scroll-spy navigation
 - [ ] TASK-054: Write tests for public APIs and section components
 
 ## Phase 6: Live Web Chat

@@ -69,10 +69,12 @@ TASK-048 completed. Starting TASK-049: Build the blog list (search, category fil
 - TASK-050: Build the blog post page (SEO metadata, markdown and code rendering)
 - TASK-051: Create Contact model and API (validation, rate limit, email notification)
 - TASK-052: Build the Contact section and form with all states
+- TASK-053: Compose the single page layout with scroll-spy navigation
 
 ## Current Task
 
-TASK-052 completed. Next is TASK-053: Compose the single page layout with scroll-spy navigation.
+TASK-053 completed. Next is TASK-054: Write tests for public APIs and section components.
+
 
 
 ## Known Issues
