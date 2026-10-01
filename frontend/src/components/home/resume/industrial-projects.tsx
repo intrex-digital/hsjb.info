@@ -1,38 +1,38 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { IndustrialProject } from "@/services/api.types"
-import { Calendar, Building2, ExternalLink, X, Code2 } from "lucide-react"
+import * as React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { IndustrialProject } from "@/services/api.types";
+import { Calendar, Building2, ExternalLink, X, Code2 } from "lucide-react";
 
 export function IndustrialProjectsSection({ items }: { items: IndustrialProject[] }) {
-  const [selectedProject, setSelectedProject] = React.useState<IndustrialProject | null>(null)
+  const [selectedProject, setSelectedProject] = React.useState<IndustrialProject | null>(null);
 
   // Prevent background scrolling when modal is open
   React.useEffect(() => {
     if (selectedProject) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset"
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = "unset"
-    }
-  }, [selectedProject])
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedProject]);
 
   if (!items || items.length === 0) {
     return (
       <div className="p-8 rounded-2xl bg-white/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 text-center">
         <p className="text-muted-foreground">No industrial projects available.</p>
       </div>
-    )
+    );
   }
 
   const formatDate = (dateStr: string | null) => {
-    if (!dateStr) return ""
-    const date = new Date(dateStr)
-    return date.toLocaleDateString("en-US", { month: "short", year: "numeric" })
-  }
+    if (!dateStr) return "";
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+  };
 
   return (
     <>
@@ -62,7 +62,7 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
               )}
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              
+
               <div className="absolute bottom-4 left-4 right-4">
                 <h3 className="text-lg font-bold text-white line-clamp-1">{project.title}</h3>
                 <p className="text-sm text-zinc-300 font-medium">{project.role}</p>
@@ -77,7 +77,7 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
               <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1">
                 {project.description}
               </p>
-              
+
               <div className="flex items-center justify-between text-xs font-semibold text-primary mt-auto pt-4 border-t border-zinc-100 dark:border-zinc-800">
                 <span>View Details</span>
                 <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -99,7 +99,7 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
               onClick={() => setSelectedProject(null)}
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             />
-            
+
             {/* Modal Content */}
             <motion.div
               layoutId={`project-card-${selectedProject.id}`}
@@ -129,7 +129,7 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/40 to-transparent" />
-                  
+
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-2">
                       {selectedProject.title}
@@ -143,7 +143,9 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
                         <Calendar className="w-4 h-4" />
                         <span>
                           {formatDate(selectedProject.start_date)} -{" "}
-                          {selectedProject.is_current ? "Present" : formatDate(selectedProject.end_date)}
+                          {selectedProject.is_current
+                            ? "Present"
+                            : formatDate(selectedProject.end_date)}
                         </span>
                       </div>
                     </div>
@@ -168,7 +170,7 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Right Column: Metadata */}
                   <div className="w-full md:w-72 shrink-0 space-y-8">
                     {selectedProject.technologies && (
@@ -189,7 +191,7 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
                         </div>
                       </div>
                     )}
-                    
+
                     {selectedProject.link && (
                       <div>
                         <h4 className="flex items-center gap-2 text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider mb-4">
@@ -214,5 +216,5 @@ export function IndustrialProjectsSection({ items }: { items: IndustrialProject[
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

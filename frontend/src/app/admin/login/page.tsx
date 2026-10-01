@@ -1,55 +1,55 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useRouter } from "next/navigation"
-import { motion } from "framer-motion"
-import { Eye, EyeOff, Loader2, Lock } from "lucide-react"
-import { toast } from "sonner"
+import * as React from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { Eye, EyeOff, Loader2, Lock } from "lucide-react";
+import { toast } from "sonner";
 
-import { useAuth } from "@/contexts/auth-context"
-import { ApiError } from "@/services"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { FieldError } from "@/components/ui/field-error"
+import { useAuth } from "@/contexts/auth-context";
+import { ApiError } from "@/services";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { FieldError } from "@/components/ui/field-error";
 
 export default function AdminLoginPage() {
-  const router = useRouter()
-  const { login, user, isLoading } = useAuth()
+  const router = useRouter();
+  const { login, user, isLoading } = useAuth();
 
-  const [email, setEmail] = React.useState("")
-  const [password, setPassword] = React.useState("")
-  const [showPassword, setShowPassword] = React.useState(false)
-  const [isSubmitting, setIsSubmitting] = React.useState(false)
-  const [fieldErrors, setFieldErrors] = React.useState<Record<string, string[]>>({})
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [fieldErrors, setFieldErrors] = React.useState<Record<string, string[]>>({});
 
   // Redirect if already authenticated
   React.useEffect(() => {
     if (!isLoading && user?.is_staff) {
-      router.replace("/admin")
+      router.replace("/admin");
     }
-  }, [user, isLoading, router])
+  }, [user, isLoading, router]);
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setFieldErrors({})
-    setIsSubmitting(true)
+    e.preventDefault();
+    setFieldErrors({});
+    setIsSubmitting(true);
     try {
-      await login(email, password)
-      toast.success("Welcome back!")
-      router.push("/admin")
+      await login(email, password);
+      toast.success("Welcome back!");
+      router.push("/admin");
     } catch (err) {
       if (err instanceof ApiError) {
         if (err.detail && typeof err.detail === "object") {
-          setFieldErrors(err.detail as Record<string, string[]>)
+          setFieldErrors(err.detail as Record<string, string[]>);
         } else {
-          toast.error(err.message || "Invalid credentials.")
+          toast.error(err.message || "Invalid credentials.");
         }
       } else {
-        toast.error("Something went wrong. Please try again.")
+        toast.error("Something went wrong. Please try again.");
       }
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   }
 
@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
       <div className="flex h-screen items-center justify-center">
         <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
       </div>
-    )
+    );
   }
 
   return (
@@ -88,9 +88,7 @@ export default function AdminLoginPage() {
             </div>
             <div>
               <h1 className="font-heading text-2xl font-bold tracking-tight">Admin Login</h1>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Sign in to access the dashboard
-              </p>
+              <p className="mt-1 text-sm text-muted-foreground">Sign in to access the dashboard</p>
             </div>
           </div>
 
@@ -135,11 +133,7 @@ export default function AdminLoginPage() {
                   onClick={() => setShowPassword((v) => !v)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4" />
-                  ) : (
-                    <Eye className="h-4 w-4" />
-                  )}
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
               </div>
               {fieldErrors.password && <FieldError error={fieldErrors.password[0]} />}
@@ -168,5 +162,5 @@ export default function AdminLoginPage() {
         </p>
       </motion.div>
     </div>
-  )
+  );
 }

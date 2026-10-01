@@ -1,23 +1,26 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Service } from "@/services/api.types"
-import { SectionHeader } from "@/components/ui/section-header"
-import { ScrollReveal } from "@/components/ui/scroll-reveal"
-import { Code2, PenTool, Search, Rocket, Layers, ArrowRight } from "lucide-react"
+import * as React from "react";
+import { Service } from "@/services/api.types";
+import { SectionHeader } from "@/components/ui/section-header";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { Code2, PenTool, Search, Rocket, Layers, ArrowRight } from "lucide-react";
 
 // A helper to pick an icon based on title or description if `icon_url` is missing
 const getFallbackIcon = (title: string) => {
-  const t = title.toLowerCase()
-  if (t.includes("design") || t.includes("ui") || t.includes("ux")) return <PenTool className="w-8 h-8" />
-  if (t.includes("seo") || t.includes("search") || t.includes("marketing")) return <Search className="w-8 h-8" />
-  if (t.includes("deploy") || t.includes("devops") || t.includes("cloud")) return <Rocket className="w-8 h-8" />
-  if (t.includes("architecture") || t.includes("system")) return <Layers className="w-8 h-8" />
-  return <Code2 className="w-8 h-8" />
-}
+  const t = title.toLowerCase();
+  if (t.includes("design") || t.includes("ui") || t.includes("ux"))
+    return <PenTool className="w-8 h-8" />;
+  if (t.includes("seo") || t.includes("search") || t.includes("marketing"))
+    return <Search className="w-8 h-8" />;
+  if (t.includes("deploy") || t.includes("devops") || t.includes("cloud"))
+    return <Rocket className="w-8 h-8" />;
+  if (t.includes("architecture") || t.includes("system")) return <Layers className="w-8 h-8" />;
+  return <Code2 className="w-8 h-8" />;
+};
 
-export function Services({ items, profileEmail }: { items: Service[], profileEmail: string }) {
-  if (!items || items.length === 0) return null
+export function Services({ items, profileEmail }: { items: Service[]; profileEmail: string }) {
+  if (!items || items.length === 0) return null;
 
   return (
     <section id="services" className="relative py-24 bg-white dark:bg-zinc-950 overflow-hidden">
@@ -38,7 +41,7 @@ export function Services({ items, profileEmail }: { items: Service[], profileEma
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((service, idx) => {
-            const mailtoLink = `mailto:${profileEmail}?subject=Enquiry regarding: ${encodeURIComponent(service.title)}`
+            const mailtoLink = `mailto:${profileEmail}?subject=Enquiry regarding: ${encodeURIComponent(service.title)}`;
 
             return (
               <ScrollReveal
@@ -48,12 +51,16 @@ export function Services({ items, profileEmail }: { items: Service[], profileEma
               >
                 {/* Hover Glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 via-amber-500/0 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 <div className="relative z-10">
                   <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400 mb-6 transition-transform group-hover:scale-110 duration-300">
                     {service.icon_url ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={service.icon_url} alt={service.title} className="w-8 h-8 object-contain" />
+                      <img
+                        src={service.icon_url}
+                        alt={service.title}
+                        className="w-8 h-8 object-contain"
+                      />
                     ) : (
                       getFallbackIcon(service.title)
                     )}
@@ -62,7 +69,7 @@ export function Services({ items, profileEmail }: { items: Service[], profileEma
                   <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
                     {service.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground leading-relaxed mb-8">
                     {service.description}
                   </p>
@@ -87,10 +94,10 @@ export function Services({ items, profileEmail }: { items: Service[], profileEma
                   </a>
                 </div>
               </ScrollReveal>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }

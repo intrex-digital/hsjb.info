@@ -1,8 +1,8 @@
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-border/40 bg-muted/20 py-8 md:py-12">
@@ -18,7 +18,7 @@ export function Footer() {
             &copy; {currentYear} Hasibul Islam. All rights reserved.
           </p>
         </div>
-        
+
         <div className="flex items-center gap-4">
           <Link
             href="https://github.com"
@@ -47,5 +47,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

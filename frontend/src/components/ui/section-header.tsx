@@ -1,11 +1,11 @@
-import * as React from "react"
-import { cn } from "cn"
+import * as React from "react";
+import { cn } from "cn";
 
 interface SectionHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string
-  subtitle?: string
-  badge?: string
-  align?: "left" | "center"
+  title: string;
+  subtitle?: string;
+  badge?: string;
+  align?: "left" | "center";
 }
 
 export function SectionHeader({
@@ -21,7 +21,7 @@ export function SectionHeader({
       className={cn(
         "flex flex-col gap-4",
         align === "center" && "items-center text-center",
-        className
+        className,
       )}
       {...props}
     >
@@ -30,18 +30,12 @@ export function SectionHeader({
           {badge}
         </span>
       )}
-      
+
       <div className="space-y-2">
-        <h2 className="font-heading text-3xl font-bold tracking-tight md:text-4xl">
-          {title}
-        </h2>
-        
-        {subtitle && (
-          <p className="max-w-2xl text-lg text-muted-foreground">
-            {subtitle}
-          </p>
-        )}
+        <h2 className="font-heading text-3xl font-bold tracking-tight md:text-4xl">{title}</h2>
+
+        {subtitle && <p className="max-w-2xl text-lg text-muted-foreground">{subtitle}</p>}
       </div>
     </div>
-  )
+  );
 }

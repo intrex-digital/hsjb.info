@@ -1,5 +1,5 @@
-import * as React from "react"
-import { cn } from "cn"
+import * as React from "react";
+import { cn } from "cn";
 
 function FieldError({
   className,
@@ -7,17 +7,14 @@ function FieldError({
   ...props
 }: React.ComponentProps<"p"> & { error?: string }) {
   if (!error) {
-    return null
+    return null;
   }
 
   return (
-    <p
-      className={cn("text-[0.8rem] font-medium text-destructive", className)}
-      {...props}
-    >
+    <p className={cn("text-[0.8rem] font-medium text-destructive", className)} {...props}>
       {error}
     </p>
-  )
+  );
 }
 
-export { FieldError }
+export { FieldError };

@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useAuth } from "@/contexts/auth-context"
-import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
-import { LayoutDashboard, LogOut } from "lucide-react"
+import { useAuth } from "@/contexts/auth-context";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { LayoutDashboard, LogOut } from "lucide-react";
 
 export default function AdminDashboardPage() {
-  const { user, logout } = useAuth()
-  const router = useRouter()
+  const { user, logout } = useAuth();
+  const router = useRouter();
 
   async function handleLogout() {
-    await logout()
-    router.replace("/admin/login")
+    await logout();
+    router.replace("/admin/login");
   }
 
   return (
@@ -44,5 +44,5 @@ export default function AdminDashboardPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
+import * as React from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
   Calendar,
@@ -12,45 +12,45 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
-} from "lucide-react"
+} from "lucide-react";
 
-import { BlogPost, BlogCategory } from "@/services/api.types"
-import { getBlogPosts } from "@/services/blog"
-import { SectionHeader } from "@/components/ui/section-header"
-import { ScrollReveal } from "@/components/ui/scroll-reveal"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Skeleton } from "@/components/ui/skeleton"
-import { EmptyState } from "@/components/ui/empty-state"
-import { ErrorState } from "@/components/ui/error-state"
-import { cn } from "@/lib/utils"
+import { BlogPost, BlogCategory } from "@/services/api.types";
+import { getBlogPosts } from "@/services/blog";
+import { SectionHeader } from "@/components/ui/section-header";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { EmptyState } from "@/components/ui/empty-state";
+import { ErrorState } from "@/components/ui/error-state";
+import { cn } from "@/lib/utils";
 
 interface BlogSectionProps {
-  initialPosts?: BlogPost[]
-  categories?: BlogCategory[]
-  totalCount?: number
-  pageSize?: number
-  showHeader?: boolean
-  title?: string
-  subtitle?: string
-  badge?: string
+  initialPosts?: BlogPost[];
+  categories?: BlogCategory[];
+  totalCount?: number;
+  pageSize?: number;
+  showHeader?: boolean;
+  title?: string;
+  subtitle?: string;
+  badge?: string;
 }
 
 function calculateReadingTime(content: string = ""): string {
-  const words = content.trim().split(/\s+/).filter(Boolean).length
-  const minutes = Math.max(1, Math.ceil(words / 200))
-  return `${minutes} min read`
+  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.ceil(words / 200));
+  return `${minutes} min read`;
 }
 
 function formatDate(dateStr: string | null): string {
-  if (!dateStr) return "Draft"
-  const date = new Date(dateStr)
+  if (!dateStr) return "Draft";
+  const date = new Date(dateStr);
   return date.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
-  })
+  });
 }
 
 export function BlogSection({
@@ -63,71 +63,71 @@ export function BlogSection({
   subtitle = "Writings on full-stack architecture, distributed systems, and best practices.",
   badge = "Technical Blog",
 }: BlogSectionProps) {
-  const [posts, setPosts] = React.useState<BlogPost[]>(initialPosts)
-  const [total, setTotal] = React.useState<number>(totalCount || initialPosts.length)
-  const [searchQuery, setSearchQuery] = React.useState("")
-  const [debouncedSearch, setDebouncedSearch] = React.useState("")
-  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null)
-  const [currentPage, setCurrentPage] = React.useState(1)
-  const [isLoading, setIsLoading] = React.useState(false)
-  const [error, setError] = React.useState<string | null>(null)
+  const [posts, setPosts] = React.useState<BlogPost[]>(initialPosts);
+  const [total, setTotal] = React.useState<number>(totalCount || initialPosts.length);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [debouncedSearch, setDebouncedSearch] = React.useState("");
+  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  const isInitialMount = React.useRef(true)
+  const isInitialMount = React.useRef(true);
 
   // Debounce search query changes
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      setDebouncedSearch(searchQuery)
-      setCurrentPage(1)
-    }, 300)
-    return () => clearTimeout(timer)
-  }, [searchQuery])
+      setDebouncedSearch(searchQuery);
+      setCurrentPage(1);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   // Reset page to 1 when category changes
   const handleCategorySelect = (categorySlug: string | null) => {
-    setSelectedCategory(categorySlug)
-    setCurrentPage(1)
-  }
+    setSelectedCategory(categorySlug);
+    setCurrentPage(1);
+  };
 
   // Fetch posts on search/category/page change
   const fetchPosts = React.useCallback(async () => {
-    setIsLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await getBlogPosts({
         search: debouncedSearch || undefined,
         category: selectedCategory || undefined,
         page: currentPage,
         page_size: pageSize,
-      })
-      setPosts(response.results || [])
-      setTotal(response.count ?? response.results?.length ?? 0)
+      });
+      setPosts(response.results || []);
+      setTotal(response.count ?? response.results?.length ?? 0);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load posts.")
+      setError(err instanceof Error ? err.message : "Failed to load posts.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [debouncedSearch, selectedCategory, currentPage, pageSize])
+  }, [debouncedSearch, selectedCategory, currentPage, pageSize]);
 
   // Trigger fetch on dependencies change (skip first render if initialPosts match)
   React.useEffect(() => {
     if (isInitialMount.current) {
-      isInitialMount.current = false
+      isInitialMount.current = false;
       if (initialPosts.length > 0 && !debouncedSearch && !selectedCategory && currentPage === 1) {
-        return
+        return;
       }
     }
-    fetchPosts()
-  }, [debouncedSearch, selectedCategory, currentPage, fetchPosts, initialPosts.length])
+    fetchPosts();
+  }, [debouncedSearch, selectedCategory, currentPage, fetchPosts, initialPosts.length]);
 
-  const totalPages = Math.ceil(total / pageSize) || 1
+  const totalPages = Math.ceil(total / pageSize) || 1;
 
   const handleClearFilters = () => {
-    setSearchQuery("")
-    setDebouncedSearch("")
-    setSelectedCategory(null)
-    setCurrentPage(1)
-  }
+    setSearchQuery("");
+    setDebouncedSearch("");
+    setSelectedCategory(null);
+    setCurrentPage(1);
+  };
 
   return (
     <section id="blog" className="relative py-24 bg-surface dark:bg-background overflow-hidden">
@@ -189,13 +189,13 @@ export function BlogSection({
                   "px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200",
                   selectedCategory === null
                     ? "bg-primary text-primary-foreground shadow-sm"
-                    : "bg-surface dark:bg-card border border-border text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
+                    : "bg-surface dark:bg-card border border-border text-muted-foreground hover:bg-secondary/40 hover:text-foreground",
                 )}
               >
                 All Categories
               </button>
               {categories.map((cat) => {
-                const isSelected = selectedCategory === cat.slug
+                const isSelected = selectedCategory === cat.slug;
                 return (
                   <button
                     key={cat.id}
@@ -205,12 +205,12 @@ export function BlogSection({
                       "px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200",
                       isSelected
                         ? "bg-primary text-primary-foreground shadow-sm"
-                        : "bg-surface dark:bg-card border border-border text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
+                        : "bg-surface dark:bg-card border border-border text-muted-foreground hover:bg-secondary/40 hover:text-foreground",
                     )}
                   >
                     {cat.name}
                   </button>
-                )
+                );
               })}
             </div>
           </div>
@@ -272,7 +272,7 @@ export function BlogSection({
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <AnimatePresence mode="popLayout">
                 {posts.map((post, idx) => {
-                  const readingTime = calculateReadingTime(post.content)
+                  const readingTime = calculateReadingTime(post.content);
                   return (
                     <motion.article
                       key={post.id}
@@ -319,8 +319,8 @@ export function BlogSection({
                                   variant="secondary"
                                   className="text-xs font-medium cursor-pointer hover:bg-secondary-strong"
                                   onClick={(e) => {
-                                    e.preventDefault()
-                                    handleCategorySelect(cat.slug)
+                                    e.preventDefault();
+                                    handleCategorySelect(cat.slug);
                                   }}
                                 >
                                   {cat.name}
@@ -370,7 +370,7 @@ export function BlogSection({
                         </div>
                       </div>
                     </motion.article>
-                  )
+                  );
                 })}
               </AnimatePresence>
             </div>
@@ -398,8 +398,8 @@ export function BlogSection({
 
                   <div className="flex items-center gap-1">
                     {Array.from({ length: totalPages }).map((_, i) => {
-                      const pageNum = i + 1
-                      const isCurrent = pageNum === currentPage
+                      const pageNum = i + 1;
+                      const isCurrent = pageNum === currentPage;
                       return (
                         <button
                           key={pageNum}
@@ -409,14 +409,14 @@ export function BlogSection({
                             "h-9 w-9 rounded-lg text-xs font-medium transition-colors",
                             isCurrent
                               ? "bg-primary text-primary-foreground font-bold shadow-sm"
-                              : "border border-border bg-surface text-foreground hover:bg-secondary/40"
+                              : "border border-border bg-surface text-foreground hover:bg-secondary/40",
                           )}
                           aria-label={`Go to page ${pageNum}`}
                           aria-current={isCurrent ? "page" : undefined}
                         >
                           {pageNum}
                         </button>
-                      )
+                      );
                     })}
                   </div>
 
@@ -438,5 +438,5 @@ export function BlogSection({
         )}
       </div>
     </section>
-  )
+  );
 }

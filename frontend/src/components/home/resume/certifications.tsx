@@ -1,6 +1,6 @@
-import * as React from "react"
-import { Certification } from "@/services/api.types"
-import { ShieldCheck, Calendar, ExternalLink } from "lucide-react"
+import * as React from "react";
+import { Certification } from "@/services/api.types";
+import { ShieldCheck, Calendar, ExternalLink } from "lucide-react";
 
 export function CertificationsSection({ items }: { items: Certification[] }) {
   if (!items || items.length === 0) {
@@ -8,14 +8,14 @@ export function CertificationsSection({ items }: { items: Certification[] }) {
       <div className="p-8 rounded-2xl bg-white/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 text-center">
         <p className="text-muted-foreground">No certifications available.</p>
       </div>
-    )
+    );
   }
 
   const formatDate = (dateStr: string | null) => {
-    if (!dateStr) return ""
-    const date = new Date(dateStr)
-    return date.toLocaleDateString("en-US", { month: "short", year: "numeric" })
-  }
+    if (!dateStr) return "";
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+  };
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
@@ -26,7 +26,7 @@ export function CertificationsSection({ items }: { items: Certification[] }) {
         >
           {/* Background Ambient Glow on Hover */}
           <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/0 via-emerald-500/0 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
-          
+
           <div className="relative z-10 flex flex-col gap-4">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
@@ -74,5 +74,5 @@ export function CertificationsSection({ items }: { items: Certification[] }) {
         </div>
       ))}
     </div>
-  )
+  );
 }

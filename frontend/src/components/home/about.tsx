@@ -1,17 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Profile } from "@/services/api.types"
-import { SectionHeader } from "@/components/ui/section-header"
-import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import * as React from "react";
+import { Profile } from "@/services/api.types";
+import { SectionHeader } from "@/components/ui/section-header";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export function About({ profile }: { profile: Profile }) {
-  if (!profile.about_text) return null
+  if (!profile.about_text) return null;
 
   // Split about text by double newlines for paragraphs
-  const paragraphs = profile.about_text
-    .split(/\n\n+/)
-    .filter((p) => p.trim().length > 0)
+  const paragraphs = profile.about_text.split(/\n\n+/).filter((p) => p.trim().length > 0);
 
   return (
     <section id="about" className="relative overflow-hidden py-24 bg-zinc-50 dark:bg-zinc-950/50">
@@ -39,7 +37,7 @@ export function About({ profile }: { profile: Profile }) {
                   loading="lazy"
                 />
               </div>
-              
+
               {/* Decorative background element */}
               <div className="absolute -inset-4 -z-10 bg-gradient-to-br from-primary/20 to-transparent blur-2xl rounded-[3rem] opacity-50" />
             </ScrollReveal>
@@ -57,5 +55,5 @@ export function About({ profile }: { profile: Profile }) {
         </div>
       </div>
     </section>
-  )
+  );
 }

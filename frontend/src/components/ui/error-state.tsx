@@ -1,12 +1,12 @@
-import * as React from "react"
-import { AlertTriangle, RefreshCcw } from "lucide-react"
-import { cn } from "cn"
-import { Button } from "@/components/ui/button"
+import * as React from "react";
+import { AlertTriangle, RefreshCcw } from "lucide-react";
+import { cn } from "cn";
+import { Button } from "@/components/ui/button";
 
 interface ErrorStateProps extends React.HTMLAttributes<HTMLDivElement> {
-  title?: string
-  description?: string
-  onRetry?: () => void
+  title?: string;
+  description?: string;
+  onRetry?: () => void;
 }
 
 export function ErrorState({
@@ -20,7 +20,7 @@ export function ErrorState({
     <div
       className={cn(
         "flex flex-col items-center justify-center rounded-2xl border border-destructive/20 bg-destructive/5 p-8 text-center animate-in fade-in-50 duration-500",
-        className
+        className,
       )}
       {...props}
     >
@@ -30,9 +30,7 @@ export function ErrorState({
       <h3 className="mb-2 font-heading text-lg font-semibold tracking-tight text-foreground">
         {title}
       </h3>
-      <p className="mb-6 max-w-sm text-sm text-muted-foreground">
-        {description}
-      </p>
+      <p className="mb-6 max-w-sm text-sm text-muted-foreground">{description}</p>
       {onRetry && (
         <Button onClick={onRetry} variant="outline" className="gap-2">
           <RefreshCcw className="h-4 w-4" />
@@ -40,5 +38,5 @@ export function ErrorState({
         </Button>
       )}
     </div>
-  )
+  );
 }

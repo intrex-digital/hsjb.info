@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
 
-
 // Mock IntersectionObserver for Framer Motion and ScrollReveal
 class MockIntersectionObserver implements IntersectionObserver {
   readonly root: Element | null = null;
@@ -24,4 +23,3 @@ Object.defineProperty(global, "IntersectionObserver", {
   configurable: true,
   value: MockIntersectionObserver,
 });
-

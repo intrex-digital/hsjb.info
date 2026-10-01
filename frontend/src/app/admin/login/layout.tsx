@@ -1,7 +1,7 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sign in",
-}
+};
 
-export { default } from "./page"
+export { default } from "./page";

@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { motion } from "framer-motion"
-import { SkillCategory } from "@/services/api.types"
-import { SectionHeader } from "@/components/ui/section-header"
-import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import * as React from "react";
+import { motion } from "framer-motion";
+import { SkillCategory } from "@/services/api.types";
+import { SectionHeader } from "@/components/ui/section-header";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export function Skills({ categories }: { categories: SkillCategory[] }) {
-  if (!categories || categories.length === 0) return null
+  if (!categories || categories.length === 0) return null;
 
   return (
     <section id="skills" className="relative py-24 overflow-hidden">
@@ -37,7 +37,7 @@ export function Skills({ categories }: { categories: SkillCategory[] }) {
               <h3 className="text-2xl font-bold tracking-tight bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
                 {category.name}
               </h3>
-              
+
               <div className="flex flex-col gap-4">
                 {category.skills.map((skill) => (
                   <div key={skill.id} className="group/skill">
@@ -60,7 +60,7 @@ export function Skills({ categories }: { categories: SkillCategory[] }) {
                         {skill.proficiency}%
                       </span>
                     </div>
-                    
+
                     {/* Progress Bar Container */}
                     <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
                       {/* Progress Bar Fill */}
@@ -68,7 +68,7 @@ export function Skills({ categories }: { categories: SkillCategory[] }) {
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.proficiency}%` }}
                         viewport={{ once: true, margin: "-10%" }}
-                        transition={{ duration: 1, delay: 0.2 + (idx * 0.1), ease: "easeOut" }}
+                        transition={{ duration: 1, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
                         className="h-full rounded-full bg-gradient-to-r from-primary to-purple-500/80 shadow-[0_0_10px_rgba(var(--primary),0.5)]"
                       />
                     </div>
@@ -80,5 +80,5 @@ export function Skills({ categories }: { categories: SkillCategory[] }) {
         </div>
       </div>
     </section>
-  )
+  );
 }
