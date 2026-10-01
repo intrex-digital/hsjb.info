@@ -13,7 +13,7 @@ urlpatterns: list = [
     # path("profile/", include("apps.profiles.urls")),
     # path("skills/", include("apps.skills.urls")),
     path("resume/", include("apps.resume.urls")),
-    # path("posts/", include("apps.blog.urls")),
+    path("", include("apps.blog.urls")),
     path("portfolio/", include("apps.portfolio.urls")),
     path("auth/", include("apps.users.urls")),
 ]

@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.portfolio",
     "apps.resume",
+    "apps.blog",
 ]
 
 AUTH_USER_MODEL = "users.CustomUser"

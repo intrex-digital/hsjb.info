@@ -1,0 +1,108 @@
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+    initial = True
+
+    dependencies = []
+
+    operations = [
+        migrations.CreateModel(
+            name="Category",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
+                ("slug", models.SlugField(blank=True, max_length=120, unique=True)),
+                ("description", models.TextField(blank=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+            ],
+            options={
+                "ordering": ["name"],
+                "verbose_name_plural": "categories",
+            },
+        ),
+        migrations.CreateModel(
+            name="Tag",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
+                ("slug", models.SlugField(blank=True, max_length=120, unique=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+            ],
+            options={"ordering": ["name"]},
+        ),
+        migrations.CreateModel(
+            name="Post",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("slug", models.SlugField(blank=True, max_length=255, unique=True)),
+                ("excerpt", models.TextField(blank=True)),
+                ("content", models.TextField()),
+                ("cover_image_url", models.URLField(blank=True, max_length=500)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[("draft", "Draft"), ("published", "Published")],
+                        db_index=True,
+                        default="draft",
+                        max_length=10,
+                    ),
+                ),
+                ("published_at", models.DateTimeField(blank=True, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "categories",
+                    models.ManyToManyField(
+                        blank=True,
+                        related_name="posts",
+                        to="blog.category",
+                    ),
+                ),
+                (
+                    "tags",
+                    models.ManyToManyField(
+                        blank=True,
+                        related_name="posts",
+                        to="blog.tag",
+                    ),
+                ),
+            ],
+            options={
+                "ordering": ["-published_at", "-created_at"],
+                "indexes": [
+                    models.Index(
+                        fields=["status", "-published_at"],
+                        name="blog_post_status_pub_idx",
+                    ),
+                ],
+            },
+        ),
+    ]

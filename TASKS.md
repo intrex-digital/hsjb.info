@@ -109,7 +109,7 @@ A task is complete only when:
 - [x] TASK-047: Build the Services section with an "Enquire" action
 
 ### Technical Blogs
-- [ ] TASK-048: Create Blog models and APIs (posts, categories, tags)
+- [x] TASK-048: Create Blog models and APIs (posts, categories, tags)
 - [ ] TASK-049: Build the blog list (search, category filter, pagination)
 - [ ] TASK-050: Build the blog post page (SEO metadata, markdown and code rendering)
 
