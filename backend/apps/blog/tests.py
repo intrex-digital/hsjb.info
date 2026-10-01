@@ -101,3 +101,70 @@ class BlogApiTests(APITestCase):
             [item["slug"] for item in tag_response.data["results"]],
             [published_tag.slug],
         )
+
+    def test_search_posts_by_query(self):
+        Post.objects.create(
+            title="Django Architecture Deep Dive",
+            excerpt="An architectural overview",
+            content="Detailed content about clean architecture",
+            status=Post.Status.PUBLISHED,
+        )
+        Post.objects.create(
+            title="Next.js App Router Guide",
+            excerpt="Frontend guide",
+            content="Building React Server Components",
+            status=Post.Status.PUBLISHED,
+        )
+
+        response = self.client.get(reverse("post-list"), {"search": "Django"})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        results = response.data["results"]
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["title"], "Django Architecture Deep Dive")
+
+    def test_filter_posts_by_category(self):
+        cat1 = Category.objects.create(name="Web Dev")
+        cat2 = Category.objects.create(name="Cloud")
+
+        p1 = Post.objects.create(
+            title="Web Development in 2026",
+            content="Content",
+            status=Post.Status.PUBLISHED,
+        )
+        p1.categories.add(cat1)
+
+        p2 = Post.objects.create(
+            title="Cloud Infrastructure",
+            content="Content",
+            status=Post.Status.PUBLISHED,
+        )
+        p2.categories.add(cat2)
+
+        response = self.client.get(reverse("post-list"), {"category": cat1.slug})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data["results"]), 1)
+        self.assertEqual(response.data["results"][0]["slug"], p1.slug)
+
+    def test_filter_posts_by_tag(self):
+        tag1 = Tag.objects.create(name="TypeScript")
+        tag2 = Tag.objects.create(name="Python")
+
+        p1 = Post.objects.create(
+            title="TypeScript Tips",
+            content="Content",
+            status=Post.Status.PUBLISHED,
+        )
+        p1.tags.add(tag1)
+
+        p2 = Post.objects.create(
+            title="Python Clean Code",
+            content="Content",
+            status=Post.Status.PUBLISHED,
+        )
+        p2.tags.add(tag2)
+
+        response = self.client.get(reverse("post-list"), {"tag": tag1.slug})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data["results"]), 1)
+        self.assertEqual(response.data["results"][0]["slug"], p1.slug)
+

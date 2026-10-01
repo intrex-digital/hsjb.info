@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { apiClient, ApiError } from "@/services"
+import { apiClient } from "@/services"
 
 interface User {
   id: number
@@ -39,6 +39,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // On mount, try to restore session from the httpOnly cookie
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     refreshUser().finally(() => setIsLoading(false))
   }, [refreshUser])
 

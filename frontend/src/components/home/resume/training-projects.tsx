@@ -19,7 +19,7 @@ export function TrainingProjectsSection({ items }: { items: TrainingProject[] })
 
   return (
     <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-300 dark:before:via-zinc-700 before:to-transparent">
-      {items.map((item, index) => (
+      {items.map((item) => (
         <div key={item.id} className="relative flex items-start justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
           
           {/* Timeline Icon */}

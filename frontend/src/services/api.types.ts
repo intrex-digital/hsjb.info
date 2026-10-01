@@ -138,3 +138,36 @@ export interface Service {
   order: number
   is_active: boolean
 }
+
+export interface BlogCategory {
+  id: number
+  name: string
+  slug: string
+  description?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface BlogTag {
+  id: number
+  name: string
+  slug: string
+  created_at: string
+  updated_at: string
+}
+
+export interface BlogPost {
+  id: number
+  title: string
+  slug: string
+  excerpt: string
+  content: string
+  cover_image_url?: string
+  status: "draft" | "published"
+  published_at: string | null
+  categories: BlogCategory[]
+  tags: BlogTag[]
+  created_at: string
+  updated_at: string
+}
+

@@ -1,4 +1,5 @@
 import { middleware } from "./middleware"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server"
 import { jwtVerify } from "jose"
 import { describe, it, expect, vi, beforeEach } from "vitest"
